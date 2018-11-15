@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "265f9176ca23e1310d9c",
+    "revision": "ab5f658ece426d03b8a6",
     "url": "/sight-words/static/css/main.fde35607.chunk.css"
   },
   {
-    "revision": "265f9176ca23e1310d9c",
-    "url": "/sight-words/static/js/main.265f9176.chunk.js"
+    "revision": "ab5f658ece426d03b8a6",
+    "url": "/sight-words/static/js/main.ab5f658e.chunk.js"
   },
   {
     "revision": "8aa51c28cd722c548f8d",
@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "/sight-words/static/js/runtime~main.6b0f26b0.js"
   },
   {
-    "revision": "88ac3bfd02126a3c85254ca7aa8b2af7",
+    "revision": "8f38cd6d4b880f355130874ea0aa27bf",
     "url": "/sight-words/index.html"
   }
 ];

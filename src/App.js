@@ -7,12 +7,11 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      contentType: 'menu'
+      contentType: 'home'
     };
   }
 
   setContentType = (componentName) => {
-    console.log(componentName)
     this.setState({
       contentType: componentName
     });

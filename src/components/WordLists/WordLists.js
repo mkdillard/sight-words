@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid, Col, Row } from 'react-flexbox-grid';
 import './WordLists.css';
 
-const WordLists = ({listA, listB} ) => {
+const WordLists = ({styleClass, listA, listB} ) => {
 
   const wordListA = listA.map((word, index) => {
     return (<Col xs={6} sm={4} md={3} lg={2} key={index}>
@@ -16,7 +16,7 @@ const WordLists = ({listA, listB} ) => {
   });
 
   return (
-    <div className='wrapper'>
+    <div  className={`wrapper ${styleClass}`}>
       <h2>List A</h2>
       <Grid fluid>
         <Row>

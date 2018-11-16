@@ -182,7 +182,7 @@ class SightWords extends Component {
 
   render() {
     return this.state.start ? (
-      <div className='word-session-container' >
+      <div className={`word-session-container ${this.props.styleClass}`}>
         {this.showLearnButtons(this.state.type)}
         <div className='small-button-wrapper' >
           <ListButton
@@ -194,7 +194,7 @@ class SightWords extends Component {
         </div>
       </div>
     ) : (
-      <div className='sight-words-menu'>
+      <div  className={`sight-words-menu ${this.props.styleClass}`}>
         <h1>{this.capitalize(this.state.type)}</h1>
         <div className='pWrapper'>
           {this.selectSightWordsDescription(this.state.type)}

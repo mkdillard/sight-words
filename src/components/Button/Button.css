@@ -1,0 +1,129 @@
+.menu-button {
+  width: 300px;
+  height: 75px;
+  margin: 10px auto;
+  border: 2px solid #000000;
+  box-shadow: 2px 5px #888888;
+}
+
+.menu-button-small {
+  width: 
+}
+.menu-button h2 {
+  margin-top: 5px;
+  margin-bottom: 0px;
+}
+
+.menu-button:hover {
+  background-color: #DDDDDD;
+}
+
+.menu-button:active {
+  box-shadow: 1px 3px #444444;
+  transform: translateY(2px) translateX(1px);
+}
+
+.word-box-button {
+  min-width: 50px;
+  height: 80px;
+  margin: 10px 2px;
+  border: 2px solid #000000;
+  box-shadow: 2px 5px #888888;
+  flex: 0 0 19%;
+  align-self: flex-start;
+}
+
+.word-box-button h2 {
+  margin: 10px auto;
+}
+
+.word-box-button:hover {
+  background-color: #DDDDDD;
+}
+
+.word-box-button:active {
+  box-shadow: 1px 3px #444444;
+  transform: translateY(2px) translateX(1px);
+}
+
+.list-button-small {
+  width: 140px;
+  height: 40px;
+  margin: 10px auto;
+  border: 2px solid #000000;
+  box-shadow: 2px 5px #888888;
+}
+
+.small-button-wrapper {
+  width: 320px;
+  margin: auto;
+  display: flex;
+
+}
+
+.list-button-small-left {
+  width: 150px;
+  height: 40px;
+  margin: 10px auto;
+  border: 2px solid #000000;
+  box-shadow: 2px 5px #888888;
+  flex: 0 0 45%;
+  align-self: flex-start;
+}
+
+.list-button-small-left:hover {
+  background-color: #DDDDDD;
+}
+
+.list-button-small-left:active {
+  box-shadow: 1px 3px #444444;
+  transform: translateY(2px) translateX(1px);
+}
+
+.list-button-small-left h2 {
+  margin: 5px;
+}
+
+.list-button-small-right {
+  width: 150px;
+  height: 40px;
+  margin: 10px auto;
+  border: 2px solid #000000;
+  box-shadow: 2px 5px #888888;
+  flex: 0 0 45%;
+  align-self: flex-end;
+}
+
+.list-button-small-right h2 {
+  margin: 5px;
+}
+
+.list-button-small-right:hover {
+  background-color: #DDDDDD;
+}
+
+.list-button-small-right:active {
+  box-shadow: 1px 3px #444444;
+  transform: translateY(2px) translateX(1px);
+}
+
+.list-button {
+  width: 300px;
+  height: 75px;
+  margin: 10px auto;
+  border: 2px solid #000000;
+  box-shadow: 2px 5px #888888;
+}
+
+.true {
+  background-color: #AAFFD1;
+}
+
+.list-button:hover {
+  background-color: #DDDDDD;
+}
+
+.list-button:active {
+  box-shadow: 1px 3px #444444;
+  transform: translateY(2px) translateX(1px);
+}

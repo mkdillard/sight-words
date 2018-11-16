@@ -1,8 +1,9 @@
 import React from 'react';
+
 import './Header.css';
 
-const Header = ({contentTypeCallback}) => (
-  <div className='header'>
+const Header = ({styleClass, contentTypeCallback}) => (
+  <div className={`header ${styleClass}`} >
     <div className='logo' onClick={() => contentTypeCallback('home')} >
       <img src={require('../../resources/abc_logo.png')} alt={'abc_logo'}
            height={'45'} width={'45'}

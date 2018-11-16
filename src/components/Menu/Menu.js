@@ -2,8 +2,8 @@ import React from 'react';
 import MenuButton from './MenuButton';
 import './Menu.css';
 
-const Menu = ({callback}) => (
-  <div className='menu'>
+const Menu = ({styleClass, callback}) => (
+  <div  className={`menu ${styleClass}`}>
     <h1>Sight Words Practice</h1>
     <div className='pWrapper'>
       <p>

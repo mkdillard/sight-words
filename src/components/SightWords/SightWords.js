@@ -26,8 +26,16 @@ class SightWords extends Component {
     }
   }
 
+  componentWillReceiveProps(nextProps){
+    if (nextProps.type !== this.state.type){
+      this.setState({
+        type: nextProps.type
+      });
+    }
+  }
+
   capitalize = (string) => {
-      return string.charAt(0).toUpperCase() + string.slice(1);
+    return string.charAt(0).toUpperCase() + string.slice(1);
   };
 
   mod = (n, m) => {
@@ -141,7 +149,6 @@ class SightWords extends Component {
     if (type === 'practice') {
       this.timer(10000);
     } else if (type === 'test') {
-      console.log(this.state.currentlistindex);
       this.timer(3000);
     }
   }
@@ -190,7 +197,7 @@ class SightWords extends Component {
       <div className='sight-words-menu'>
         <h1>{this.capitalize(this.state.type)}</h1>
         <div className='pWrapper'>
-          {this.selectSightWordsDescription()}
+          {this.selectSightWordsDescription(this.state.type)}
         </div>
         <h4>Which List of words would you like to use</h4>
         <ListButton

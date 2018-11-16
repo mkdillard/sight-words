@@ -6,7 +6,7 @@
   min-height: 90%;
   display: flex;
   justify-content: center;
-  align-items: center;  
+  align-items: center;
 }
 
 .menu-item {
@@ -30,6 +30,9 @@ h4.menu-item {
 
 .logo {
   max-height: 45px;
-  border: 1px solid #FFFFFF;
   float: left;
+}
+
+.logo:hover {
+  cursor: pointer;
 }

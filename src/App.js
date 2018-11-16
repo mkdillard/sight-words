@@ -13,9 +13,13 @@ class App extends Component {
   }
 
   setContentType = (componentName) => {
+    // console.log(this.state.contentType);
     this.setState({
       contentType: componentName
     });
+    // console.log('I am here');
+    // console.log(this.state.contentType);
+    // this.forceUpdate();
   }
 
   render() {

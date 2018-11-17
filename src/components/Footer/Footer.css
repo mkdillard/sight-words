@@ -1,15 +1,38 @@
 .wrapper {
-  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
   background-color: #000000;
   color: #FFFFFF;
   font-size: 8pt;
   clear: both;
 }
 
-.float-left {
-  float: left;
+.iconAttribution a {
+    color: #FFFFFF;
 }
 
-.float-right {
-  float: right;
+@media only screen and (max-width: 500px) {
+
+  .wrapper {
+    padding: 0.1em 1em;
+  }
+
+}
+
+@media only screen and (min-width: 500px) {
+
+  .wrapper {
+    padding: 0.1em 1em;
+  }
+
+  .copyright {
+    float: left;
+  }
+
+  .iconAttribution {
+    float: right;
+  }
+
 }

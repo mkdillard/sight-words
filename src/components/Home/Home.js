@@ -3,9 +3,7 @@ import { Link } from 'react-router-dom';
 import Button from '../Button/Button';
 import './Home.css';
 
-const Home = (props) => {
-
-  console.log(props);
+const Home = () => {
 
   return (
     <div className='homeContent'>
@@ -34,16 +32,16 @@ const Home = (props) => {
         </ul>
         <div className='homeMenu'>
           <Link className='homeLink' to="/learn">
-            <Button name={'Learn'} description={'Flashcards'} cb={() => {console.log('Hi')}} />
+            <Button name={'Learn'} description={'Flashcards'} />
           </Link>
           <Link className='homeLink' to="/wordlist">
-            <Button name={'Word List'} description={'All 50 Words'} cb={() => {console.log('Hi')}} />
+            <Button name={'Word List'} description={'All 50 Words'} />
           </Link>
           <Link className='homeLink' to="/practice">
-            <Button name={'Practice'} description={'10 second timer'} cb={() => {console.log('Hi')}} />
+            <Button name={'Practice'} description={'10 second timer'} />
           </Link>
           <Link className='homeLink' to="/test">
-            <Button name={'Test'} description={'3 second timer'} cb={() => {console.log('Hi')}} />
+            <Button name={'Test'} description={'3 second timer'} />
           </Link>
         </div>
       </div>

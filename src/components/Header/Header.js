@@ -46,7 +46,7 @@ class Header extends React.Component {
             </Link>
             <Link className='headerLink firstLink' to='/'>HOME</Link>
           </div>
-          <div className='hamburger' tabIndex='-1' onClick={this.toggleHidden} onBlur={this.toggleHidden}>
+          <div className='hamburger' onClick={this.toggleHidden}>
             {!this.state.isHidden &&
               <div className='hamburgerDropdown'>
                 <Link className='headerLink dropdownLink' to='/wordlist'>WORD LIST</Link>

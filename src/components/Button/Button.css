@@ -1,0 +1,26 @@
+.menu-button {
+  width: 100%;
+  height: auto;
+  margin: 10px auto;
+  border: 2px solid #000000;
+  box-shadow: 2px 5px #888888;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.menu-button h2 {
+  margin-top: 5px;
+  margin-bottom: 0px;
+}
+
+.menu-button:hover {
+  background-color: #DDDDDD;
+}
+
+.menu-button:active {
+  box-shadow: 1px 3px #444444;
+  transform: translateY(2px) translateX(1px);
+}

@@ -5,7 +5,7 @@ const Footer = () => {
   let year = new Date().getFullYear();
 
   return (
-    <div className='wrapper'>
+    <div className='footerWrapper'>
       <div className='copyright'>
         <p>
           Copyright &copy; {year} Michael Dillard.

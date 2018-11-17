@@ -29,12 +29,14 @@ class Header extends React.Component {
             />
           </Link>
           <Link className='headerLink firstLink' to='/'>HOME</Link>
-          <Link className='headerLink' to='/wordlists'>WORD LISTS</Link>
+          <Link className='headerLink' to='/wordlist'>WORD LIST</Link>
           <Link className='headerLink' to='/learn'>LEARN</Link>
           <Link className='headerLink' to='/practice'>PRACTICE</Link>
           <Link className='headerLink' to='/test'>TEST</Link>
         </div>
-        {/*Mobile Navbar*/}
+        {/*
+          Mobile Navbar
+        */}
         <div className='navbar mobile'>
           <div className='mobileNavLeftWrapper'>
             <Link className='headerLink firstLink' to='/'>
@@ -44,10 +46,10 @@ class Header extends React.Component {
             </Link>
             <Link className='headerLink firstLink' to='/'>HOME</Link>
           </div>
-          <div className='hamburger' onClick={this.toggleHidden}>
+          <div className='hamburger' tabIndex='-1' onClick={this.toggleHidden} onBlur={this.toggleHidden}>
             {!this.state.isHidden &&
               <div className='hamburgerDropdown'>
-                <Link className='headerLink dropdownLink' to='/wordlists'>WORD LISTS</Link>
+                <Link className='headerLink dropdownLink' to='/wordlist'>WORD LIST</Link>
                 <Link className='headerLink dropdownLink' to='/learn'>LEARN</Link>
                 <Link className='headerLink dropdownLink' to='/practice'>PRACTICE</Link>
                 <Link className='headerLink dropdownLink' to='/test'>TEST</Link>

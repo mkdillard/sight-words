@@ -1,0 +1,52 @@
+.homeContent {
+  margin: 30px 10%;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-bottom: 5em;
+}
+
+.homeContent h1 {
+  margin-bottom: -15px;
+}
+
+.homeContent p {
+  text-align: left;
+}
+
+.homeContent ul {
+  text-align: left;
+}
+
+.homeMenu {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.homeLink {
+  flex-basis: calc(45%);
+  text-decoration: none;
+  color: #000000;
+  padding: 0;
+  margin: 0 5px;
+}
+
+.homeLink Button {
+  width: 50%;
+  margin: 0;
+}
+
+@media only screen and (max-width: 500px) {
+
+  .desktop{
+    display: none;
+  }
+
+}
+
+@media only screen and (min-width: 500px) {
+
+}

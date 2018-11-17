@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { HashRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
+import Home from './components/Home/Home';
 
 import './App.css';
 
@@ -9,19 +10,19 @@ class App extends Component {
 
   render() {
     return (
-      <HashRouter>
-        <div>
-          <div className='row'>
-            <Header className='col-12 col-s-12' />
-          </div>
-          <div className='row'>
-            <p>Content goes here someday</p>
-          </div>
-          <div className='row'>
-            <Footer className='col-12 col-s-12' />
-          </div>
+      <BrowserRouter>
+        <div className='appWrapper'>
+          <Header />
+          <Route exact path='/' render={(routerProps) => <Home {...routerProps} />} />
+          {/*
+            <Route path='/wordlists' component={WordLists} />
+            <Route path='/learn' component={Learn} />
+            <Route path='/practice' component={Practice} />
+            <Route path='/test' component={Test} />
+          */}
+          <Footer />
         </div>
-      </HashRouter>
+      </BrowserRouter>
     );
   }
 }

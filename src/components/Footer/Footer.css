@@ -1,21 +1,15 @@
-.footer {
-  position:absolute;
-  bottom:0;
-  width:100%;
-  height:30px;   /* Height of the footer */
+.wrapper {
+  width: 100%;
   background-color: #000000;
   color: #FFFFFF;
   font-size: 8pt;
+  clear: both;
 }
 
-.copyright {
+.float-left {
   float: left;
 }
 
-.attribution {
+.float-right {
   float: right;
-}
-
-.attribution a {
-  color: #FFFFFF;
 }

@@ -1,38 +1,84 @@
-.header {
+.navbar {
   width: 100%;
-  height: 50px;
   background-color: #000000;
-  padding-left: 20px;
-  min-height: 90%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.menu-item {
-  display: inline-block;
   color: #FFFFFF;
-  font-family: Arial, Helvetica, sans-serif;
-  padding: 5px 15px;
-  margin-bottom: 10px;
-  text-align: center;
-  vertical-align: top;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.menu-item:hover {
-  cursor: pointer;
-  background-color: #444444;
-}
-
-h4.menu-item {
+.headerLink {
+  text-decoration: none;
   border-left: 1px solid #FFFFFF;
+  color: #FFFFFF;
+  padding: 0px 5px;
 }
 
-.logo {
-  max-height: 45px;
-  float: left;
+.firstLink {
+  border-left: none;
 }
 
-.logo:hover {
-  cursor: pointer;
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 500px) {
+
+  .desktop {
+    display: none;
+  }
+
+  .mobile {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .mobileNavLeftWrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  .hamburger {
+    position: relative;
+    display: inline-block;
+    width: 1.25em;
+    height: 0.8em;
+    margin-right: 0.8em;
+    border-top: 0.2em solid #FFFFFF;
+    border-bottom: 0.2em solid #FFFFFF;
+  }
+
+  .hamburger:before {
+      content: "";
+      position: absolute;
+      top: 0.1em;
+      left: 0px;
+      width: 100%;
+      border-top: 0.2em solid #FFFFFF;
+  }
+
+  .hamburgerDropdown {
+    background-color: #000000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    z-index: 1;
+    right: -0.8em;
+    top: 1.71em;
+
+  }
+
+  .dropdownLink {
+    background-color: #000000;
+    border: 1px solid #FFFFFF;
+    width: 8em;
+    padding: 10px;
+  }
+
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 500px) {
+  .mobile {
+    display: none;
+  }
+
 }

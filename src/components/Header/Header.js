@@ -1,20 +1,63 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 import './Header.css';
 
-const Header = ({styleClass, contentTypeCallback}) => (
-  <div className={`header ${styleClass}`} >
-    <div className='logo' onClick={() => contentTypeCallback('home')} >
-      <img src={require('../../resources/abc_logo.png')} alt={'abc_logo'}
-           height={'45'} width={'45'}
-      />
-    </div>
-    <h3 className='menu-item' onClick={() => contentTypeCallback('home')}> HOME </h3>
-    <h4 className='menu-item' onClick={() => contentTypeCallback('words')}> WORDS </h4>
-    <h4 className='menu-item' onClick={() => contentTypeCallback('learn')}> LEARN </h4>
-    <h4 className='menu-item' onClick={() => contentTypeCallback('practice')}> PRACTICE </h4>
-    <h4 className='menu-item' onClick={() => contentTypeCallback('test')}> TEST </h4>
-  </div>
-)
+class Header extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      isHidden: true
+    }
+  }
+
+  toggleHidden = () => {
+    this.setState({
+      isHidden: !this.state.isHidden
+    });
+  }
+
+  render () {
+
+    return (
+      <div>
+        {/*Desktop Navbar*/}
+        <div className='navbar desktop' >
+          <Link className='headerLink firstLink' to='/'>
+            <img src={require('../../resources/abc_logo.png')} alt={'abc_logo'}
+                 height={'45'} width={'45'}
+            />
+          </Link>
+          <Link className='headerLink firstLink' to='/'>HOME</Link>
+          <Link className='headerLink' to='/wordlists'>WORD LISTS</Link>
+          <Link className='headerLink' to='/learn'>LEARN</Link>
+          <Link className='headerLink' to='/practice'>PRACTICE</Link>
+          <Link className='headerLink' to='/test'>TEST</Link>
+        </div>
+        {/*Mobile Navbar*/}
+        <div className='navbar mobile'>
+          <div className='mobileNavLeftWrapper'>
+            <Link className='headerLink firstLink' to='/'>
+              <img src={require('../../resources/abc_logo.png')} alt={'abc_logo'}
+                   height={'45'} width={'45'}
+              />
+            </Link>
+            <Link className='headerLink firstLink' to='/'>HOME</Link>
+          </div>
+          <div className='hamburger' onClick={this.toggleHidden}>
+            {!this.state.isHidden &&
+              <div className='hamburgerDropdown'>
+                <Link className='headerLink dropdownLink' to='/wordlists'>WORD LISTS</Link>
+                <Link className='headerLink dropdownLink' to='/learn'>LEARN</Link>
+                <Link className='headerLink dropdownLink' to='/practice'>PRACTICE</Link>
+                <Link className='headerLink dropdownLink' to='/test'>TEST</Link>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
 
 export default Header;

@@ -1,0 +1,8 @@
+.wordBoxWrapper {
+  color: #000000;
+}
+
+.wordBoxWrapper p {
+  font-size: 40pt;
+  font-weight: bold;
+}

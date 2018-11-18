@@ -1,21 +1,38 @@
-.footer {
-  position:absolute;
-  bottom:0;
-  width:100%;
-  height:30px;   /* Height of the footer */
+.footerWrapper {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  right: 0;
   background-color: #000000;
   color: #FFFFFF;
   font-size: 8pt;
+  clear: both;
 }
 
-.copyright {
-  float: left;
+.iconAttribution a {
+    color: #FFFFFF;
 }
 
-.attribution {
-  float: right;
+@media only screen and (max-width: 500px) {
+
+  .wrapper {
+    padding: 0.1em 1em;
+  }
+
 }
 
-.attribution a {
-  color: #FFFFFF;
+@media only screen and (min-width: 500px) {
+
+  .wrapper {
+    padding: 0.1em 1em;
+  }
+
+  .copyright {
+    float: left;
+  }
+
+  .iconAttribution {
+    float: right;
+  }
+
 }

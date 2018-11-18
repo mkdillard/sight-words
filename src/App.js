@@ -15,12 +15,12 @@ class App extends Component {
       <BrowserRouter>
         <div className='appWrapper'>
           <Header />
-          <Route exact path='/' render={(routerProps) => <Home {...routerProps} />} />
-          <Route path='/wordlist' render={(routerProps) => <WordList {...routerProps} listA={Words.listA} listB={Words.listB} />} />
-          <Route path='/learn' render={(routerProps) => <Learn {...routerProps} listA={Words.listA} listB={Words.listB} />} />
+          <Route exact path='/' className='router' render={(routerProps) => <Home {...routerProps} />} />
+          <Route path='/wordlist' className='router' render={(routerProps) => <WordList {...routerProps} listA={Words.listA} listB={Words.listB} />} />
+          <Route path='/learn' className='router' render={(routerProps) => <Learn {...routerProps} listA={Words.listA} listB={Words.listB} />} />
           {/*
-            <Route path='/practice' component={Practice} />
-            <Route path='/test' component={Test} />
+            <Route path='/practice' className='router' component={Practice} />
+            <Route path='/test' className='router' component={Test} />
           */}
           <Footer />
         </div>

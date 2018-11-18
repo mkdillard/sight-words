@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import WordBox from '../WordBox/WordBox';
 import Button from '../Button/Button';
-import { Mod, Shuffle, BuildList, Capitalize } from '../ListUtility/ListUtility';
+import { Mod, Shuffle } from '../ListUtility/ListUtility';
 import './Learn.css';
 
 class Learn extends React.Component {
@@ -109,8 +109,7 @@ class Learn extends React.Component {
 
     ) : (
       <div className='learnWrapper'>
-        <WordBox className='wordBox' word={this.state.list[this.state.listIndex]} >
-        </WordBox>
+        <WordBox className='wordBox' word={this.state.list[this.state.listIndex]} />
         <div className='wordBoxButtonWrapper'>
           <div>
             <Button name={'Prev'} description={''} cb={this.getPreviousWord} cbParam={null} />

@@ -40,34 +40,20 @@ class Test extends React.Component {
     });
   }
 
-  setListType = (listName) => {
-    let tempList = this.state[listName];
-    this.setState({
-      list: Shuffle(tempList),
-      listIndex: 0,
-      listName: listName
-    });
-  }
-
-  checkWhichList = (list) => {
-    if (this.state.listName === list) {
-      return true;
-    }
-    return false;
-  }
-
-  toggleStartType = () => {
-    if ( this.state.listName === 'lista' || this.state.listName === 'listb' || this.state.listName === 'both') {
-      this.setState(
-        this.state.start ? {
-         listName: 'none',
+  toggleStart = (list) => {
+    if ( list === 'lista' || list === 'listb' || list === 'both') {
+      let tempList = this.state[list];
+      this.setState({
+         list: Shuffle(tempList),
+         listIndex: 0,
+         listName: list,
          start: !this.state.start
-       } : {
-         start: !this.state.start
-       }
-     );
+       });
     } else {
-      alert('Please Select which list you want to use before starting.');
+     this.setState({
+       listName: 'none',
+       start: !this.state.start
+     })
     }
   }
 
@@ -105,29 +91,23 @@ class Test extends React.Component {
         </div>
         <div className='selectListButtonDiv' >
           <Button
-            name={'List A'} active={this.checkWhichList('lista')}
-            cb={this.setListType} cbParam={'lista'}
+            name={'List A'} cb={this.toggleStart} cbParam={'lista'}
           />
         </div>
         <div className='selectListButtonDiv' >
           <Button
-            name={'List B'} active={this.checkWhichList('listb')}
-            cb={this.setListType} cbParam={'listb'}
+            name={'List B'} cb={this.setListType} cbParam={'listb'}
           />
         </div>
         <div className='selectListButtonDiv' >
           <Button
-            name={'Both'} active={this.checkWhichList('both')}
-            cb={this.setListType} cbParam={'both'}
+            name={'Both'} cb={this.setListType} cbParam={'both'}
           />
         </div>
-        <div className='wordBoxMenu'>
+        <div className='selectListButtonDiv'>
           <Link className='testLink' to='/'>
             <Button name={'Home'} description={''} />
           </Link>
-          <div className='testLink'>
-            <Button name={'Start'} description={''} cb={this.toggleStartType} cbParam={null} />
-          </div>
         </div>
       </div>
     ) : (
@@ -138,7 +118,7 @@ class Test extends React.Component {
             <Button name={'Home'} description={''} />
           </Link>
           <div className='testLink'>
-            <Button name={'Back'} description={''} cb={this.toggleStartType} cbParam={null}/>
+            <Button name={'Back'} description={''} cb={this.toggleStart} cbParam={'none'}/>
           </div>
         </div>
       </div>

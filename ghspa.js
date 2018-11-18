@@ -38,6 +38,7 @@
          var a = v.split('=')
          q[a[0]] = a.slice(1).join('=').replace(/~and~/g, '&')
        })
+       console.log('q', q);
        if (q.p !== undefined) {
          window.history.replaceState(null, null,
            repo + (q.p || '') +
@@ -49,6 +50,7 @@
    }
 
   /* if current document is 404 page page, redirect to index.html otherwise resolve */
+  console.log(document.title);
   document.title === '404' ? redirect() : resolve()
 
 }(window.location, window.projectPages || true ))

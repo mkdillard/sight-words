@@ -20,9 +20,9 @@
 ;(function(l, projectPages) {
 
   var repo = projectPages ? '/' + l.pathname.split('/')[1] : ''
-  console.log(repo);
    /* redirect all 404 trafic to index.html */
    function redirect() {
+    console.log(repo);
      l.replace(l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') + repo + '/?' +
               (l.pathname ? 'p=' + l.pathname.replace(/&/g, '~and~').replace(repo, '') : '') +
               (l.search ? '&q=' + l.search.slice(1).replace(/&/g, '~and~') : '') +
@@ -31,6 +31,7 @@
 
    /* resolve 404 redirects into internal routes */
    function resolve() {
+    console.log(repo);
      if (l.search) {
        var q = {}
        l.search.slice(1).split('&').forEach(function(v) {

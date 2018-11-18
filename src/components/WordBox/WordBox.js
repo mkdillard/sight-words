@@ -1,12 +1,21 @@
 import React from 'react';
 import './WordBox.css';
 
-const WordBox = ({word}) => {
+export const WordBox = ({word}) => {
   return (
     <div className='wordBoxWrapper'>
       <p>{word}</p>
     </div>
   );
-}
+};
+
+export const WordBoxTimer = ({word, updateWord}) => {
+  updateWord();
+  return(
+    <div className='wordBoxWrapper'>
+      <p>{word}</p>
+    </div>
+  );
+};
 
 export default WordBox;

@@ -1,11 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import WordBox from '../WordBox/WordBox';
+import { Link, Redirect } from 'react-router-dom';
+import {WordBoxTimer} from '../WordBox/WordBox';
 import Button from '../Button/Button';
 import { Mod, Shuffle } from '../ListUtility/ListUtility';
-import './Learn.css';
+import './Test.css';
 
-class Learn extends React.Component {
+class Test extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -15,18 +15,14 @@ class Learn extends React.Component {
       both: [...props.listA, ...props.listB],
       list: ['word', 'word2'],
       listIndex: 0,
-      listName: 'none'
+      listName: 'none',
+      listFinished: false
     }
   }
 
-  componentWillMount(){
-    if(this.props.location.state) {
-      this.setState({
-        start: this.props.location.state.start,
-        list: this.props.location.state.list,
-        listIndex: this.props.location.state.listIndex,
-        listName: this.props.location.state.listName
-      })
+  componentWillUnmount() {
+    if(this.timerHandle) {
+      clearTimeout(this.timerHandle);
     }
   }
 
@@ -45,7 +41,6 @@ class Learn extends React.Component {
   }
 
   setListType = (listName) => {
-    console.log(listName);
     let tempList = this.state[listName];
     this.setState({
       list: Shuffle(tempList),
@@ -76,12 +71,37 @@ class Learn extends React.Component {
     }
   }
 
+  timer = () => {
+    this.timerHandle = setTimeout(() => {
+      if (this.state.listIndex < this.state.list.length-1) {
+        this.setState({
+          listIndex: this.state.listIndex + 1
+        });
+      } else {
+        this.setState({
+          listFinished: true
+        });
+      }
+    }, 3000);
+  }
+
   render() {
+    if (this.state.listFinished) {
+      return <Redirect to={{
+        pathname: '/learn',
+        state: {
+          start: this.state.start,
+          list: this.state.list,
+          listIndex: this.state.listIndex,
+          listName: this.state.listName
+        }
+      }} />
+    }
     return !this.state.start ? (
-      <div className='learnWrapper'>
+      <div className='testWrapper'>
         <div>
-          <h1>Learn</h1>
-          <h4>Which List of words would you like to study with?</h4>
+          <h1>Test</h1>
+          <h4>Which List of words would you like to test with?</h4>
         </div>
         <div className='selectListButtonDiv' >
           <Button
@@ -102,31 +122,22 @@ class Learn extends React.Component {
           />
         </div>
         <div className='wordBoxMenu'>
-          <Link className='learnLink' to="/">
+          <Link className='testLink' to="/">
             <Button name={'Home'} description={''} />
           </Link>
-          <div className='learnLink'>
+          <div className='testLink'>
             <Button name={'Start'} description={''} cb={this.toggleStartType} cbParam={null} />
           </div>
         </div>
       </div>
-
     ) : (
-      <div className='learnWrapper'>
-        <WordBox className='wordBox' word={this.state.list[this.state.listIndex]} />
-        <div className='wordBoxButtonWrapper'>
-          <div>
-            <Button name={'Prev'} description={''} cb={this.getPreviousWord} cbParam={null} />
-          </div>
-          <div>
-            <Button name={'Next'} description={''} cb={this.getNextWord} cbParam={null} />
-          </div>
-        </div>
+      <div className='testWrapper'>
+        <WordBoxTimer className='wordBox' word={this.state.list[this.state.listIndex]} updateWord={this.timer} />
         <div className='wordBoxMenu' >
-          <Link className='learnLink' to="/">
+          <Link className='testLink' to="/">
             <Button name={'Home'} description={''} />
           </Link>
-          <div className='learnLink'>
+          <div className='testLink'>
             <Button name={'Back'} description={''} cb={this.toggleStartType} cbParam={null}/>
           </div>
         </div>
@@ -134,4 +145,4 @@ class Learn extends React.Component {
     );
   }
 }
-export default Learn;
+export default Test;

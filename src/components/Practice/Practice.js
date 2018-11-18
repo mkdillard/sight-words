@@ -67,7 +67,7 @@ class Practice extends React.Component {
        }
      );
     } else {
-      alert("Please Select which list you want to use before starting.");
+      alert('Please Select which list you want to use before starting.');
     }
   }
 
@@ -122,7 +122,7 @@ class Practice extends React.Component {
           />
         </div>
         <div className='wordBoxMenu'>
-          <Link className='practiceLink' to="/">
+          <Link className='practiceLink' to='/sight-words'>
             <Button name={'Home'} description={''} />
           </Link>
           <div className='practiceLink'>
@@ -134,7 +134,7 @@ class Practice extends React.Component {
       <div className='practiceWrapper'>
         <WordBoxTimer className='wordBox' word={this.state.list[this.state.listIndex]} updateWord={this.timer} />
         <div className='wordBoxMenu' >
-          <Link className='practiceLink' to="/">
+          <Link className='practiceLink' to='/sight-words'>
             <Button name={'Home'} description={''} />
           </Link>
           <div className='practiceLink'>

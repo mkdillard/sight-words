@@ -103,9 +103,9 @@ class Learn extends React.Component {
        }
      );
     } else {
-      alert("Please Select which list you want to use before starting.");
+      alert('Please Select which list you want to use before starting.1');
     }
-    if (typeof this.state.speechVoice === "undefined") {
+    if (typeof this.state.speechVoice === 'undefined') {
       this.setState({
         speechVoice: this.setVoice()
       })
@@ -138,7 +138,7 @@ class Learn extends React.Component {
           />
         </div>
         <div className='wordBoxMenu'>
-          <Link className='learnLink' to="/">
+          <Link className='learnLink' to='/sight-words'>
             <Button name={'Home'} description={''} />
           </Link>
           <div className='learnLink'>
@@ -162,7 +162,7 @@ class Learn extends React.Component {
           </div>
         </div>
         <div className='wordBoxMenu' >
-          <Link className='learnLink' to="/">
+          <Link className='learnLink' to='/sight-words'>
             <Button name={'Home'} description={''} />
           </Link>
           <div className='learnLink'>

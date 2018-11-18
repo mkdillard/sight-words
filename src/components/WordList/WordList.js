@@ -33,7 +33,7 @@ const WordList = ({listA, listB}) => {
           {wordListB}
         </div>
       </div>
-      <Link className='wordListLink' to="/">
+      <Link className='wordListLink' to='/sight-words'>
         <Button name={'Home'} description={''} />
       </Link>
     </div>

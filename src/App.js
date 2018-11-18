@@ -17,11 +17,11 @@ class App extends Component {
       <BrowserRouter>
         <div className='appWrapper'>
           <Header />
-          <Route exact path='/' className='router' render={(routerProps) => <Home {...routerProps} />} />
-          <Route path='/wordlist' className='router' render={(routerProps) => <WordList {...routerProps} listA={Words.listA} listB={Words.listB} />} />
-          <Route path='/learn' className='router' render={(routerProps) => <Learn {...routerProps} listA={Words.listA} listB={Words.listB} />} />
-          <Route path='/practice' className='router' render={(routerProps) => <Practice {...routerProps} listA={Words.listA} listB={Words.listB} />} />
-          <Route path='/test' className='router' render={(routerProps) => <Test {...routerProps} listA={Words.listA} listB={Words.listB} />} />
+          <Route exact path='/sight-words' className='router' render={(routerProps) => <Home {...routerProps} />} />
+          <Route path='/sight-words/wordlist' className='router' render={(routerProps) => <WordList {...routerProps} listA={Words.listA} listB={Words.listB} />} />
+          <Route path='/sight-words/learn' className='router' render={(routerProps) => <Learn {...routerProps} listA={Words.listA} listB={Words.listB} />} />
+          <Route path='/sight-words/practice' className='router' render={(routerProps) => <Practice {...routerProps} listA={Words.listA} listB={Words.listB} />} />
+          <Route path='/sight-words/test' className='router' render={(routerProps) => <Test {...routerProps} listA={Words.listA} listB={Words.listB} />} />
           <Footer />
         </div>
       </BrowserRouter>

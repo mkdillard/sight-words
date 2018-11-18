@@ -122,7 +122,7 @@ class Practice extends React.Component {
           />
         </div>
         <div className='wordBoxMenu'>
-          <Link className='practiceLink' to='/sight-words'>
+          <Link className='practiceLink' to='/'>
             <Button name={'Home'} description={''} />
           </Link>
           <div className='practiceLink'>
@@ -134,7 +134,7 @@ class Practice extends React.Component {
       <div className='practiceWrapper'>
         <WordBoxTimer className='wordBox' word={this.state.list[this.state.listIndex]} updateWord={this.timer} />
         <div className='wordBoxMenu' >
-          <Link className='practiceLink' to='/sight-words'>
+          <Link className='practiceLink' to='/'>
             <Button name={'Home'} description={''} />
           </Link>
           <div className='practiceLink'>

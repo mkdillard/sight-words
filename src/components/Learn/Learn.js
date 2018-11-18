@@ -138,7 +138,7 @@ class Learn extends React.Component {
           />
         </div>
         <div className='wordBoxMenu'>
-          <Link className='learnLink' to='/sight-words'>
+          <Link className='learnLink' to='/'>
             <Button name={'Home'} description={''} />
           </Link>
           <div className='learnLink'>
@@ -162,7 +162,7 @@ class Learn extends React.Component {
           </div>
         </div>
         <div className='wordBoxMenu' >
-          <Link className='learnLink' to='/sight-words'>
+          <Link className='learnLink' to='/'>
             <Button name={'Home'} description={''} />
           </Link>
           <div className='learnLink'>

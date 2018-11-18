@@ -31,16 +31,16 @@ const Home = () => {
           </li>
         </ul>
         <div className='homeMenu'>
-          <Link className='homeLink' to='/sight-words/wordlist'>
+          <Link className='homeLink' to='/wordlist'>
             <Button name={'Word List'} description={'All 50 Words'} />
           </Link>
-          <Link className='homeLink' to='/sight-words/learn'>
+          <Link className='homeLink' to='/learn'>
             <Button name={'Learn'} description={'Flashcards'} />
           </Link>
-          <Link className='homeLink' to='/sight-words/practice'>
+          <Link className='homeLink' to='/practice'>
             <Button name={'Practice'} description={'10 second timer'} />
           </Link>
-          <Link className='homeLink' to='/sight-words/test'>
+          <Link className='homeLink' to='/test'>
             <Button name={'Test'} description={'3 second timer'} />
           </Link>
         </div>

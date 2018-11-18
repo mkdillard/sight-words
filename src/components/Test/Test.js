@@ -122,7 +122,7 @@ class Test extends React.Component {
           />
         </div>
         <div className='wordBoxMenu'>
-          <Link className='testLink' to='/sight-words'>
+          <Link className='testLink' to='/'>
             <Button name={'Home'} description={''} />
           </Link>
           <div className='testLink'>
@@ -134,7 +134,7 @@ class Test extends React.Component {
       <div className='testWrapper'>
         <WordBoxTimer className='wordBox' word={this.state.list[this.state.listIndex]} updateWord={this.timer} />
         <div className='wordBoxMenu' >
-          <Link className='testLink' to='/sight-words'>
+          <Link className='testLink' to='/'>
             <Button name={'Home'} description={''} />
           </Link>
           <div className='testLink'>

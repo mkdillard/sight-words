@@ -1,0 +1,53 @@
+.learnWrapper {
+  width: 80%;
+  margin: 3.5em 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.wordBox {
+  width: 95%;
+  height: 150%;
+  flex: 1;
+  margin-top: 15%;
+}
+
+.wordBoxButtonWrapper {
+  width: 95%;
+  margin-top: 15%;
+  margin-bottom: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.wordBoxButtonWrapper div {
+  flex: 0 0 25%;
+  margin: 0;
+}
+
+.wordBoxMenu {
+  width: 95%;
+  margin-top: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.learnLink {
+  flex-basis: 45%;
+  text-decoration: none;
+  color: black;
+}
+
+.learnLink Button {
+  width: 50%;
+  margin: 10px;
+}
+
+.selectListButtonDiv {
+  width: 95%;
+}

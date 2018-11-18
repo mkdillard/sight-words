@@ -1,19 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../Button/Button';
-import Words from '../../data/sightwords.json';
 import './WordList.css'
 
 
-const WordList = () => {
+const WordList = ({listA, listB}) => {
 
-  const wordListA = Words.listA.map((word, index) => {
+  const wordListA = listA.map((word, index) => {
     return (
       <p className='word' key={index} >{word}</p>
     );
   });
 
-  const wordListB = Words.listB.map((word, index) => {
+  const wordListB = listB.map((word, index) => {
     return (
       <p className='word' key={index} >{word}</p>
     );

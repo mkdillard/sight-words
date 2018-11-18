@@ -15,18 +15,43 @@ class Learn extends React.Component {
       both: [...props.listA, ...props.listB],
       list: ['word', 'word2'],
       listIndex: 0,
-      listName: 'none'
+      listName: 'none',
+      speechVoice: this.setVoice,
+      speechRate: 0.5
     }
   }
 
   componentWillMount(){
-    if(this.props.location.state) {
+    if (this.props.location.state) {
       this.setState({
         start: this.props.location.state.start,
         list: this.props.location.state.list,
         listIndex: this.props.location.state.listIndex,
-        listName: this.props.location.state.listName
-      })
+        listName: this.props.location.state.listName,
+      });
+    }
+    this.setState ({
+      speechVoice: this.setVoice()
+    });
+  }
+
+  componentWillUnmount() {
+    if(this.voiceTimer) {
+      clearTimeout(this.voiceTimer);
+    }
+  }
+
+  setVoice = () => {
+    let voiceList = speechSynthesis.getVoices();
+    if (voiceList.length !== 0) {
+      let voice = voiceList.filter(
+        (v) => {
+          return (v.name === 'Google US English');
+        }
+      )[0];
+      return voice;
+    } else {
+      this.voiceTimer = setTimeout(() => {this.setVoice();}, 100);
     }
   }
 
@@ -44,8 +69,14 @@ class Learn extends React.Component {
     });
   }
 
+  speakWord = (word) => {
+    let msg = new SpeechSynthesisUtterance(word);
+    msg.voice = this.state.speechVoice;
+    msg.rate = this.state.speechRate;
+    speechSynthesis.speak(msg);
+  }
+
   setListType = (listName) => {
-    console.log(listName);
     let tempList = this.state[listName];
     this.setState({
       list: Shuffle(tempList),
@@ -73,6 +104,11 @@ class Learn extends React.Component {
      );
     } else {
       alert("Please Select which list you want to use before starting.");
+    }
+    if (typeof this.state.speechVoice === "undefined") {
+      this.setState({
+        speechVoice: this.setVoice()
+      })
     }
   }
 
@@ -117,6 +153,9 @@ class Learn extends React.Component {
         <div className='wordBoxButtonWrapper'>
           <div>
             <Button name={'Prev'} description={''} cb={this.getPreviousWord} cbParam={null} />
+          </div>
+          <div>
+            <Button name={'Say It'} description={''} cb={this.speakWord} cbParam={this.state.list[this.state.listIndex]} />
           </div>
           <div>
             <Button name={'Next'} description={''} cb={this.getNextWord} cbParam={null} />

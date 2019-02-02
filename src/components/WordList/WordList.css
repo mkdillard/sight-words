@@ -1,5 +1,6 @@
 .wordListWrapper {
   width: 80%;
+  max-width: 800px;
   margin: 3.5em 10%;
   display: flex;
   flex-wrap: wrap;

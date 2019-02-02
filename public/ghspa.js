@@ -15,8 +15,7 @@
  *  @param {Object} l, the document current location
  *  @param {Boolean} projectPages, true by default, https://help.github.com/articles/user-organization-and-project-pages
  *
- */
-
+**/
 ;(function(l, projectPages) {
 
   var repo = projectPages ? '/' + l.pathname.split('/')[1] : ''
@@ -50,4 +49,4 @@
   /* if current document is 404 page page, redirect to index.html otherwise resolve */
   document.title === '404' ? redirect() : resolve()
 
-}(window.location, window.projectPages || true ))
+}(window.location, window.projectPages || true ));

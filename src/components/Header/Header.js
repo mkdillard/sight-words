@@ -31,8 +31,7 @@ class Header extends React.Component {
           <Link className='headerLink firstLink' to='/'>HOME</Link>
           <Link className='headerLink' to='/wordlist'>WORD LIST</Link>
           <Link className='headerLink' to='/learn'>LEARN</Link>
-          <Link className='headerLink' to='/practice'>PRACTICE</Link>
-          <Link className='headerLink' to='/test'>TEST</Link>
+          <Link className='headerLink' to='/timed'>TIMED</Link>
         </div>
         {/*
           Mobile Navbar
@@ -51,8 +50,7 @@ class Header extends React.Component {
               <div className='hamburgerDropdown'>
                 <Link className='headerLink dropdownLink' to='/wordlist'>WORD LIST</Link>
                 <Link className='headerLink dropdownLink' to='/learn'>LEARN</Link>
-                <Link className='headerLink dropdownLink' to='/practice'>PRACTICE</Link>
-                <Link className='headerLink dropdownLink' to='/test'>TEST</Link>
+                <Link className='headerLink dropdownLink' to='/timed'>TIMED</Link>
               </div>
             }
           </div>

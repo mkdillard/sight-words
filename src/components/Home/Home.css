@@ -1,5 +1,6 @@
 .homeContent {
   width: 80%;
+  max-width: 800px;
   margin: 3.5em 10%;
   padding: 10px;
   display: flex;
@@ -25,19 +26,19 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
+  justify-content: center;
 }
 
 .homeLink {
-  flex-basis: calc(45%);
+  flex-basis: calc(43%);
   text-decoration: none;
   color: #000000;
   padding: 0;
-  margin: 0 5px;
+  margin: 0 2%;
 }
 
-.homeLink Button {
-  width: 50%;
-  margin: 0;
+.homeLinkLong {
+  flex-basis: calc(90%);
 }
 
 @media only screen and (max-width: 500px) {

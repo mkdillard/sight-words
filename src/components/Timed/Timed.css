@@ -1,4 +1,4 @@
-.learnWrapper {
+.timedWrapper {
   width: 80%;
   max-width: 800px;
   height: auto;
@@ -12,28 +12,22 @@
   width: 95%;
 }
 
-.learnMenu {
+.timedMenu {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
 }
 
-.learnMenuButton {
+.timedMenuButton {
   flex-basis: calc(43%);
   padding: 0;
   margin: 0 2%;
 }
 
-.learnMenuButtonLong {
+.timedMenuButtonLong {
   flex-basis: calc(90%);
   padding: 0;
   margin: 0;
-}
-
-.learnMenuListNavigationButton {
-  flex-basis: calc(28%);
-  padding: 0;
-  margin: 0 2%;
 }
 
 .link {

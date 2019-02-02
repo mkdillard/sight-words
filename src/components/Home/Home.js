@@ -23,25 +23,22 @@ const Home = () => {
         <ul>
           <li>View a list of all Sight Words.</li>
           <li>Study Sight Words in learning mode.</li>
-          <li>Practice identifying Sight Words in practice
-              mode using a longer 10 second timer</li>
           <li>Practice identifying Sight Words in test
               mode using a 3 second timer to imitate
               classroom testing conditions.
           </li>
         </ul>
         <div className='homeMenu'>
-          <Link className='homeLink' to='/wordlist'>
-            <Button name={'Word List'} description={'All 50 Words'} />
+          <Link className='homeLink homeLinkLong' to='/wordlist'>
+            <Button name={'Word List'} description={'All 100 Words'} />
           </Link>
+        </div>
+        <div className='homeMenu'>
           <Link className='homeLink' to='/learn'>
             <Button name={'Learn'} description={'Flashcards'} />
           </Link>
-          <Link className='homeLink' to='/practice'>
-            <Button name={'Practice'} description={'10 second timer'} />
-          </Link>
-          <Link className='homeLink' to='/test'>
-            <Button name={'Test'} description={'3 second timer'} />
+          <Link className='homeLink' to='/timed'>
+            <Button name={'Timed'} description={'3 second timer'} />
           </Link>
         </div>
       </div>

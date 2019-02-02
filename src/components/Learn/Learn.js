@@ -12,7 +12,11 @@ class Learn extends React.Component {
       start: false,
       lista: props.listA,
       listb: props.listB,
-      both: [...props.listA, ...props.listB],
+      listc: props.listC,
+      listd: props.listD,
+      listab: [...props.listA, ...props.listB],
+      listcd: [...props.listC, ...props.listD],
+      all: [...props.listA, ...props.listB, ...props.listC, ...props.listD],
       list: ['word', 'word2'],
       listIndex: 0,
       listName: 'none',
@@ -77,7 +81,7 @@ class Learn extends React.Component {
   }
 
   toggleStart = (list) => {
-    if ( list === 'lista' || list === 'listb' || list === 'both') {
+    if (['lista', 'listb', 'listc', 'listd', 'listab', 'listcd', 'all'].includes(list)) {
       let tempList = this.state[list];
       this.setState({
          list: Shuffle(tempList),
@@ -105,23 +109,51 @@ class Learn extends React.Component {
           <h1>Learn</h1>
           <h4>Which List of words would you like to study with?</h4>
         </div>
-        <div className='selectListButtonDiv' >
-          <Button
-            name={'List A'} cb={this.toggleStart} cbParam={'lista'}
-          />
+        <div className='learnMenu' >
+          <div className='learnMenuButton'>
+            <Button
+              name={'List A'} cb={this.toggleStart} cbParam={'lista'}
+            />
+          </div>
+          <div className='learnMenuButton'>
+            <Button
+              name={'List B'} cb={this.toggleStart} cbParam={'listb'}
+            />
+          </div>
         </div>
-        <div className='selectListButtonDiv' >
-          <Button
-            name={'List B'} cb={this.toggleStart} cbParam={'listb'}
-          />
+        <div className='learnMenu' >
+          <div className='learnMenuButton'>
+            <Button
+              name={'List C'} cb={this.toggleStart} cbParam={'listc'}
+            />
+          </div>
+          <div className='learnMenuButton'>
+            <Button
+              name={'List D'} cb={this.toggleStart} cbParam={'listd'}
+            />
+          </div>
         </div>
-        <div className='selectListButtonDiv' >
-          <Button
-            name={'Both'} cb={this.toggleStart} cbParam={'both'}
-          />
+        <div className='learnMenu' >
+          <div className='learnMenuButton'>
+            <Button
+              name={'Lists A&B'} cb={this.toggleStart} cbParam={'listab'}
+            />
+          </div>
+          <div className='learnMenuButton'>
+            <Button
+              name={'Lists C&D'} cb={this.toggleStart} cbParam={'listcd'}
+            />
+          </div>
         </div>
-        <div className='selectListButtonDiv'>
-          <Link className='learnLink' to='/'>
+        <div className='learnMenu' >
+          <div className='learnMenuButtonLong'>
+            <Button
+              name={'All Lists'} cb={this.toggleStart} cbParam={'all'}
+            />
+          </div>
+        </div>
+        <div className='learnMenu'>
+          <Link className='learnMenuButtonLong link' to='/'>
             <Button name={'Home'} description={''} />
           </Link>
         </div>
@@ -130,22 +162,22 @@ class Learn extends React.Component {
     ) : (
       <div className='learnWrapper'>
         <WordBox className='wordBox' word={this.state.list[this.state.listIndex]} />
-        <div className='wordBoxButtonWrapper'>
-          <div>
+        <div className='learnMenu'>
+          <div className='learnMenuListNavigationButton'>
             <Button name={'Prev'} description={''} cb={this.getPreviousWord} cbParam={null} />
           </div>
-          <div>
+          <div className='learnMenuListNavigationButton'>
             <Button name={'Say It'} description={''} cb={this.speakWord} cbParam={this.state.list[this.state.listIndex]} />
           </div>
-          <div>
+          <div className='learnMenuListNavigationButton'>
             <Button name={'Next'} description={''} cb={this.getNextWord} cbParam={null} />
           </div>
         </div>
-        <div className='wordBoxMenu' >
-          <Link className='learnLink' to='/'>
+        <div className='learnMenu'>
+          <Link className='learnMenuButton link' to='/'>
             <Button name={'Home'} description={''} />
           </Link>
-          <div className='learnLink'>
+          <div className='learnMenuButton'>
             <Button name={'Back'} description={''} cb={this.toggleStart} cbParam={'none'}/>
           </div>
         </div>

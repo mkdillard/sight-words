@@ -14,18 +14,14 @@ const Home = () => {
           Welcome to the Sight Words Practice Application.
         </p>
         <p>
-          This app allows you to study Sight Words and test
-          your knowledge to see how many you have learned.
-        </p>
-        <p>
-          You can use this app to:
+          This app will help students to learn and practice Sight Words.
+          There are three ways you can use this app:
         </p>
         <ul>
           <li>View a list of all Sight Words.</li>
-          <li>Study Sight Words in learning mode.</li>
-          <li>Practice identifying Sight Words in test
-              mode using a 3 second timer to imitate
-              classroom testing conditions.
+          <li>Practice Sight Words in learning mode at your own pace.</li>
+          <li>Practice identifying Sight Words in timed
+              mode using a 3 second timer.
           </li>
         </ul>
         <div className='homeMenu'>

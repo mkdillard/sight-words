@@ -14,20 +14,26 @@
 
 .learnMenu {
   display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+}
+
+.learnMenuCheckbox {
+  flex-basis: calc(90%);
+  padding: 0;
+  margin: -2% 0;
 }
 
 .learnMenuButton {
-  flex-basis: calc(43%);
-  padding: 0;
-  margin: 0 2%;
-}
-
-.learnMenuButtonLong {
   flex-basis: calc(90%);
   padding: 0;
   margin: 0;
+}
+
+.learnMenuListNavigation{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
 }
 
 .learnMenuListNavigationButton {

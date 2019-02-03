@@ -14,17 +14,23 @@
 
 .timedMenu {
   display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+}
+
+.timedWordMenu {
+  display: flex;
   flex-flow: row wrap;
   justify-content: center;
 }
 
-.timedMenuButton {
-  flex-basis: calc(43%);
+.timedMenuCheckbox {
+  flex-basis: calc(90%);
   padding: 0;
-  margin: 0 2%;
+  margin: -2% 0;
 }
 
-.timedMenuButtonLong {
+.timedMenuButton {
   flex-basis: calc(90%);
   padding: 0;
   margin: 0;

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import {WordBoxTimer} from '../WordBox/WordBox';
 import Button from '../Button/Button';
+import Checkbox from '../Checkbox/Checkbox';
 import { Mod, Shuffle } from '../ListUtility/ListUtility';
 import './Timed.css';
 
@@ -14,12 +15,9 @@ class Timed extends React.Component {
       listb: props.listB,
       listc: props.listC,
       listd: props.listD,
-      listab: [...props.listA, ...props.listB],
-      listcd: [...props.listC, ...props.listD],
-      all: [...props.listA, ...props.listB, ...props.listC, ...props.listD],
+      checkedLists: [],
       list: ['word', 'word2'],
       listIndex: 0,
-      listName: 'none',
       listFinished: false
     }
   }
@@ -44,20 +42,46 @@ class Timed extends React.Component {
     });
   }
 
-  toggleStart = (list) => {
-    if (['lista', 'listb', 'listc', 'listd', 'listab', 'listcd', 'all'].includes(list)) {
-      let tempList = this.state[list];
+
+  updateCheckedLists = (active, list) => {
+    let newCheckedLists = this.state.checkedLists;
+    if(active && !newCheckedLists.includes(list)) {
+      newCheckedLists.push(list);
+    } else if (!active && newCheckedLists.includes(list)) {
+      newCheckedLists = newCheckedLists.filter((element) => {return element !== list});
+    }
+    this.setState({
+      checkedLists: newCheckedLists
+    });
+  }
+
+  toggleStart = () => {
+    if(this.state.start) {
       this.setState({
-         list: Shuffle(tempList),
-         listIndex: 0,
-         listName: list,
-         start: !this.state.start
-       });
+        start: !this.state.start,
+        checkedLists: [],
+        list: ['word', 'word2'],
+        listIndex: 0,
+        listFinished: false
+      });
     } else {
-     this.setState({
-       listName: 'none',
-       start: !this.state.start
-     })
+      let tempList = [];
+      let alreadyAddedList = [];
+      for(const list of this.state.checkedLists) {
+        if (['lista', 'listb', 'listc', 'listd'].includes(list) && !alreadyAddedList.includes(list)) {
+          tempList = [...tempList, ...this.state[list]];
+          alreadyAddedList.push(list);
+        }
+      }
+      if (tempList.length > 0) {
+        this.setState({
+          list: Shuffle(tempList),
+          listIndex: 0,
+          start: !this.state.start
+        });
+      } else {
+        alert("Please select at least one list before starting.");
+      }
     }
   }
 
@@ -82,8 +106,7 @@ class Timed extends React.Component {
         state: {
           start: this.state.start,
           list: this.state.list,
-          listIndex: this.state.listIndex,
-          listName: this.state.listName
+          listIndex: this.state.listIndex
         }
       }} />
     }
@@ -91,53 +114,39 @@ class Timed extends React.Component {
       <div className='timedWrapper'>
         <div>
           <h1>Timed Practice</h1>
-          <h4>Which List of words would you like to do a timed practice with?</h4>
+          <h4>Select one or more word lists you would like to do a timed practice with.</h4>
+        </div>
+        <div className='timedMenu' >
+          <div className='timedMenuCheckbox'>
+            <Checkbox
+              name={'List A'} size={'large'} cb={this.updateCheckedLists} cbParam={'lista'}
+            />
+          </div>
+          <div className='timedMenuCheckbox'>
+            <Checkbox
+              name={'List B'} size={'large'} cb={this.updateCheckedLists} cbParam={'listb'}
+            />
+          </div>
+          <div className='timedMenuCheckbox'>
+            <Checkbox
+              name={'List C'} size={'large'} cb={this.updateCheckedLists} cbParam={'listc'}
+            />
+          </div>
+          <div className='timedMenuCheckbox'>
+            <Checkbox
+              name={'List D'} size={'large'} cb={this.updateCheckedLists} cbParam={'listd'}
+            />
+          </div>
         </div>
         <div className='timedMenu' >
           <div className='timedMenuButton'>
             <Button
-              name={'List A'} cb={this.toggleStart} cbParam={'lista'}
-            />
-          </div>
-          <div className='timedMenuButton'>
-            <Button
-              name={'List B'} cb={this.toggleStart} cbParam={'listb'}
-            />
-          </div>
-        </div>
-        <div className='timedMenu' >
-          <div className='timedMenuButton'>
-            <Button
-              name={'List C'} cb={this.toggleStart} cbParam={'listc'}
-            />
-          </div>
-          <div className='timedMenuButton'>
-            <Button
-              name={'List D'} cb={this.toggleStart} cbParam={'listd'}
-            />
-          </div>
-        </div>
-        <div className='timedMenu' >
-          <div className='timedMenuButton'>
-            <Button
-              name={'Lists A&B'} cb={this.toggleStart} cbParam={'listab'}
-            />
-          </div>
-          <div className='timedMenuButton'>
-            <Button
-              name={'Lists C&D'} cb={this.toggleStart} cbParam={'listcd'}
-            />
-          </div>
-        </div>
-        <div className='timedMenu' >
-          <div className='timedMenuButtonLong'>
-            <Button
-              name={'All Lists'} cb={this.toggleStart} cbParam={'all'}
+              name={'Start'} cb={this.toggleStart}
             />
           </div>
         </div>
         <div className='timedMenu'>
-          <Link className='timedMenuButtonLong link' to='/'>
+          <Link className='timedMenuButton link' to='/'>
             <Button name={'Home'} description={''} />
           </Link>
         </div>
@@ -145,12 +154,12 @@ class Timed extends React.Component {
     ) : (
       <div className='timedWrapper'>
         <WordBoxTimer className='wordBox' word={this.state.list[this.state.listIndex]} updateWord={this.timer} />
-        <div className='timedMenu' >
+        <div className='timedWordMenu' >
           <Link className='timedMenuButton link' to='/'>
             <Button name={'Home'} description={''} />
           </Link>
           <div className='timedMenuButton link'>
-            <Button name={'Back'} description={''} cb={this.toggleStart} cbParam={'none'}/>
+            <Button name={'Back'} description={''} cb={this.toggleStart} />
           </div>
         </div>
       </div>

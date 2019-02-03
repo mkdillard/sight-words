@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import WordBox from '../WordBox/WordBox';
 import Button from '../Button/Button';
+import Checkbox from '../Checkbox/Checkbox';
 import { Mod, Shuffle } from '../ListUtility/ListUtility';
 import './Learn.css';
 
@@ -14,12 +15,9 @@ class Learn extends React.Component {
       listb: props.listB,
       listc: props.listC,
       listd: props.listD,
-      listab: [...props.listA, ...props.listB],
-      listcd: [...props.listC, ...props.listD],
-      all: [...props.listA, ...props.listB, ...props.listC, ...props.listD],
+      checkedLists: [],
       list: ['word', 'word2'],
       listIndex: 0,
-      listName: 'none',
       speechVoice: this.setVoice,
       speechRate: 0.5
     }
@@ -31,7 +29,6 @@ class Learn extends React.Component {
         start: this.props.location.state.start,
         list: this.props.location.state.list,
         listIndex: this.props.location.state.listIndex,
-        listName: this.props.location.state.listName,
       });
     }
     this.setState ({
@@ -80,25 +77,49 @@ class Learn extends React.Component {
     speechSynthesis.speak(msg);
   }
 
-  toggleStart = (list) => {
-    if (['lista', 'listb', 'listc', 'listd', 'listab', 'listcd', 'all'].includes(list)) {
-      let tempList = this.state[list];
-      this.setState({
-         list: Shuffle(tempList),
-         listIndex: 0,
-         listName: list,
-         start: !this.state.start
-       });
-    } else {
-      this.setState({
-        listName: 'none',
-        start: !this.state.start
-      })
+  updateCheckedLists = (active, list) => {
+    let newCheckedLists = this.state.checkedLists;
+    if(active && !newCheckedLists.includes(list)) {
+      newCheckedLists.push(list);
+    } else if (!active && newCheckedLists.includes(list)) {
+      newCheckedLists = newCheckedLists.filter((element) => {return element !== list});
     }
-    if (typeof this.state.speechVoice === 'undefined') {
+    this.setState({
+      checkedLists: newCheckedLists
+    })
+  }
+
+  toggleStart = () => {
+    if(this.state.start) {
       this.setState({
-        speechVoice: this.setVoice()
-      })
+        start: !this.state.start,
+        checkedLists: [],
+        list: [],
+        listIndex: 0
+      });
+    } else {
+      let tempList = [];
+      let alreadyAddedList = [];
+      for(const list of this.state.checkedLists) {
+        if (['lista', 'listb', 'listc', 'listd'].includes(list) && !alreadyAddedList.includes(list)) {
+          tempList = [...tempList, ...this.state[list]];
+          alreadyAddedList.push(list);
+        }
+      }
+      if (tempList.length > 0) {
+        this.setState({
+          list: Shuffle(tempList),
+          listIndex: 0,
+          start: !this.state.start
+        });
+      } else {
+        alert("Please select at least one list before starting.");
+      }
+      if (typeof this.state.speechVoice === 'undefined') {
+        this.setState({
+          speechVoice: this.setVoice()
+        })
+      }
     }
   }
 
@@ -107,62 +128,47 @@ class Learn extends React.Component {
       <div className='learnWrapper'>
         <div>
           <h1>Learn</h1>
-          <h4>Which List of words would you like to study with?</h4>
+          <h4>Select one or more word lists you would like to study with and press start.</h4>
+        </div>
+        <div className='learnMenu' >
+          <div className='learnMenuCheckbox'>
+            <Checkbox
+              name={'List A'} size={'large'} cb={this.updateCheckedLists} cbParam={'lista'}
+            />
+          </div>
+          <div className='learnMenuCheckbox'>
+            <Checkbox
+              name={'List B'} size={'large'} cb={this.updateCheckedLists} cbParam={'listb'}
+            />
+          </div>
+          <div className='learnMenuCheckbox'>
+            <Checkbox
+              name={'List C'} size={'large'} cb={this.updateCheckedLists} cbParam={'listc'}
+            />
+          </div>
+          <div className='learnMenuCheckbox'>
+            <Checkbox
+              name={'List D'} size={'large'} cb={this.updateCheckedLists} cbParam={'listd'}
+            />
+          </div>
         </div>
         <div className='learnMenu' >
           <div className='learnMenuButton'>
             <Button
-              name={'List A'} cb={this.toggleStart} cbParam={'lista'}
-            />
-          </div>
-          <div className='learnMenuButton'>
-            <Button
-              name={'List B'} cb={this.toggleStart} cbParam={'listb'}
-            />
-          </div>
-        </div>
-        <div className='learnMenu' >
-          <div className='learnMenuButton'>
-            <Button
-              name={'List C'} cb={this.toggleStart} cbParam={'listc'}
-            />
-          </div>
-          <div className='learnMenuButton'>
-            <Button
-              name={'List D'} cb={this.toggleStart} cbParam={'listd'}
-            />
-          </div>
-        </div>
-        <div className='learnMenu' >
-          <div className='learnMenuButton'>
-            <Button
-              name={'Lists A&B'} cb={this.toggleStart} cbParam={'listab'}
-            />
-          </div>
-          <div className='learnMenuButton'>
-            <Button
-              name={'Lists C&D'} cb={this.toggleStart} cbParam={'listcd'}
-            />
-          </div>
-        </div>
-        <div className='learnMenu' >
-          <div className='learnMenuButtonLong'>
-            <Button
-              name={'All Lists'} cb={this.toggleStart} cbParam={'all'}
+              name={'Start'} cb={this.toggleStart}
             />
           </div>
         </div>
         <div className='learnMenu'>
-          <Link className='learnMenuButtonLong link' to='/'>
+          <Link className='learnMenuButton link' to='/'>
             <Button name={'Home'} description={''} />
           </Link>
         </div>
       </div>
-
     ) : (
       <div className='learnWrapper'>
         <WordBox className='wordBox' word={this.state.list[this.state.listIndex]} />
-        <div className='learnMenu'>
+        <div className='learnMenuListNavigation'>
           <div className='learnMenuListNavigationButton'>
             <Button name={'Prev'} description={''} cb={this.getPreviousWord} cbParam={null} />
           </div>
@@ -173,12 +179,12 @@ class Learn extends React.Component {
             <Button name={'Next'} description={''} cb={this.getNextWord} cbParam={null} />
           </div>
         </div>
-        <div className='learnMenu'>
+        <div className='learnMenuListNavigation'>
           <Link className='learnMenuButton link' to='/'>
             <Button name={'Home'} description={''} />
           </Link>
           <div className='learnMenuButton'>
-            <Button name={'Back'} description={''} cb={this.toggleStart} cbParam={'none'}/>
+            <Button name={'Back'} description={''} cb={this.toggleStart}/>
           </div>
         </div>
       </div>

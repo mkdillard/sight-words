@@ -1,0 +1,38 @@
+.checkbox {
+  width: 100%;
+  min-width: 300px;
+  height: auto;
+  margin: 10px auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkboxTitleBar {
+  flex-basis: calc(90%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  margin: 5px 10px 0px;
+}
+
+.checkboxTitleBar h2{
+  margin-left: 10px;
+}
+
+.checkboxText {
+  flex-basis: calc(90%);
+  margin-top: -10px;
+}
+
+@media only screen and (max-width: 500px) {
+
+  .checkbox {
+    min-width: 150px;
+  }
+
+}
